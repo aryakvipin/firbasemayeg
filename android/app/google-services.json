@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "206531305485",
+    "project_id": "firbasemayeg",
+    "storage_bucket": "firbasemayeg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206531305485:android:0c4d113c19291493cbb544",
+        "android_client_info": {
+          "package_name": "com.example.firbasemayeg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcJVS3kdGd04EcblI5PlKEgj4HsVAj4F8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
