@@ -1,4 +1,5 @@
 
+import 'package:firbasemayeg/update.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class Myapp extends StatelessWidget {
          routes: {
       '/':(context) =>Homepage(),
       '/add':(context)=>Adduser(),
+      '/update':(context)=>Updateuser(),
       },
       initialRoute: '/',);
       }

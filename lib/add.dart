@@ -12,9 +12,11 @@ class Adduser extends StatefulWidget {
 
 class Adduser_state extends State<Adduser> {
   final CollectionReference login=FirebaseFirestore.instance.collection('doner');
-
+   TextEditingController donername=TextEditingController();
+   TextEditingController donerphone =TextEditingController();
   void adduser(){
-
+  final data={'name':donername.text,'phone':donerphone.text};
+  login.add(data);
   }
 
   @override
@@ -30,17 +32,22 @@ class Adduser_state extends State<Adduser> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(decoration: InputDecoration(border: OutlineInputBorder(),
+              child: TextField(controller:donername ,
+                  decoration: InputDecoration(border: OutlineInputBorder(),
               labelText:"Donar Name",)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(maxLength: 10,
+              child: TextField(controller: donerphone,
+                  maxLength: 10,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(border: OutlineInputBorder(),
                 labelText:"Phone nomber",)),
             ),
-            ElevatedButton(onPressed: (){}, child: Text("submit"),style: ButtonStyle(
+            ElevatedButton(onPressed: (){
+              adduser();
+              Navigator.pop(context);
+            }, child: Text("submit"),style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(Size(150,50)),backgroundColor: MaterialStateProperty.all(Colors.red))
             
             )])

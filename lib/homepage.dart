@@ -24,25 +24,41 @@ class _HomepageState extends State<Homepage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     body: StreamBuilder(
-        stream: login.snapshots(),
+        stream: login
+
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemBuilder: (context,index){
               final DocumentSnapshot donersnap=snapshot.data!.docs[index];
-              return Card(child:
-              ListTile(
-                title: Text(donersnap['name'],
-                ),
-                subtitle: Text(donersnap['phone']
-                ),
-                trailing: Row(
+              return Card(
+                child: Container(child:
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.delete))
+                    Container(
+                      child: Column(
+                        children: [
+                         SizedBox(height: 20,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: Text(donersnap['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          ),
+                          Text(donersnap["phone"],style: TextStyle(fontSize: 15),),
+                          SizedBox(height: 20,)
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton( onPressed: () {
+                          Navigator.pushNamed(context, '/update');
+                        }, icon:Icon(Icons.edit),),
+                        IconButton( onPressed: () {  }, icon:Icon(Icons.delete),),                      ],
+                    )
                   ],
-                ),
-              ));
+                )),
+              );
             },itemCount:snapshot.data!.docs.length ,);
           }
           // snapshot.data is QuerySnapshot than I access .docs to get List<QueryDocumentSnapshot>
