@@ -8,7 +8,9 @@ class Homepage extends StatefulWidget{
 
 class _HomepageState extends State<Homepage> {
   final CollectionReference login=FirebaseFirestore.instance.collection('doner');
-
+void deleteuser(docid){
+   login.doc(docid).delete();
+}
   @override
   Widget build(BuildContext context) {
 
@@ -52,9 +54,16 @@ class _HomepageState extends State<Homepage> {
                     Row(
                       children: [
                         IconButton( onPressed: () {
-                          Navigator.pushNamed(context, '/update');
+                          Navigator.pushNamed(context, '/update'
+                          ,arguments: {
+                             'name' :  donersnap['name'],
+                              'phone':  donersnap['phone'],
+                                'id':donersnap.id
+                              });
                         }, icon:Icon(Icons.edit),),
-                        IconButton( onPressed: () {  }, icon:Icon(Icons.delete),),                      ],
+                        IconButton( onPressed: () {
+                          deleteuser(donersnap.id);
+                        }, icon:Icon(Icons.delete),),                      ],
                     )
                   ],
                 )),
