@@ -41,7 +41,8 @@ void deleteuser(docid){
                     Container(
                       child: Column(
                         children: [
-                         SizedBox(height: 20,),
+                           Image(image:  donersnap[0]["source"]
+                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 5),
                             child: Text(donersnap['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
